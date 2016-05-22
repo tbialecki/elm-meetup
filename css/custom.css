@@ -1,0 +1,9 @@
+.reveal section .logo {
+    border: none;
+    width: 100px;
+    margin: 0 auto;
+    background: none;
+    box-shadow: none;
+    display: block;
+    margin-top: 200px;
+}
