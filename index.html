@@ -39,14 +39,17 @@
             </section>
             <section data-markdown>
                 <script type="text/template">
-                    ## Tasks
-
-                    This code does not send any request:
+                    ## Tasks - composability
 
                     ```elm
-                    getSiiliOffice : Task Http.Error String
-                    getSiiliOffice =
-                        Http.getString "http://api.zippopotam.us/pl/50-073"
+                    getOffers : String -> Task Http.Error (List Offer)
+                    getOffers customerName =
+                      let
+                        url = "http://some.api/customer?name=" ++ customerName
+                        offersUrl id = "http://some.api/customer/" ++ id ++ "/offer"
+                      in
+                        Http.get customerDecode url
+                          `andThen` (\c -> Http.get offersDecoder (offersUrl c.id))
                     ```
                 </script>
             </section>
@@ -54,16 +57,61 @@
                 <script type="text/template">
                     ## Tasks
 
-                    It needs to go to the `init` or `update` section of the `Html.program`:
+                    This code does not send any request:
+
+                    ```elm
+                    getSiiliOffice : Task Http.Error String
+                    getSiiliOffice =
+                      Http.getString "http://api.zippopotam.us/pl/50-073"
+                    ```
+                </script>
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Commands (Cmd)
+
+                    - specifies what effect is needed
+                    - and how to come back to the application (messages)
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Commmand from task
+
+                    ```elm
+                    getSiiliOfficeCmd =
+                      Task.perform SiiliOfficeFailure SiiliOfficeSuccess getSiiliOffice
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## To perform the commmand:
 
                     ```elm
                     main =
-                        Html.program
-                            { init = init
-                            , view = view
-                            , update = update
-                            , subscriptions = always Sub.none
-                            }
+                      Html.program
+                        { init = (initialModel, getSiiliOfficeCmd)
+                        , view = view
+                        , update = update
+                        , subscriptions = always Sub.none
+                        }
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Or:
+
+                    ```elm
+                    update msg model =
+                      case msg of
+                        ...
+                        GetSiiliOffice ->
+                          (model, getSiiliOfficeCmd)
+                        ...
                     ```
                 </script>
             </section>
