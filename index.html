@@ -142,6 +142,41 @@
             </section>
         </section>
         <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Ports
+
+                    - for communication with JS code
+                    - incoming or outcoming
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Elm part
+
+                    ```elm
+                    port check : String -> Cmd msg
+
+                    port suggestions : (List String -> msg) -> Sub msg
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## JS part
+
+                    ```javascript
+                    var app = Elm.Spelling.fullscreen();
+
+                    app.ports.check.subscribe(function(word) {
+                        var suggestions = spellCheck(word);
+                        app.ports.suggestions.send(suggestions);
+                    });
+                    ```
+                </script>
+            </section>
+        </section>
+        <section>
             <h2>Questions ?</h2>
         </section>
     </div>
