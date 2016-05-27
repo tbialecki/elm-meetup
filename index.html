@@ -73,7 +73,7 @@
                     ## Commands (Cmd)
 
                     - specifies what effect is needed
-                    - and how to come back to the application (messages)
+                    - and how to come back to the application (what messages)
                 </script>
             </section>
             <section data-markdown>
@@ -112,6 +112,31 @@
                         GetSiiliOffice ->
                           (model, getSiiliOfficeCmd)
                         ...
+                    ```
+                </script>
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Subscriptions (Sub)
+
+                    - for listening for external messages
+                    - specifies how to prompt the application (what message)
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Sub - example
+
+                    ```elm
+                    main =
+                      Html.program
+                        { init = init
+                        , view = view
+                        , update = update
+                        , subscriptions = always (Geolocation.changes CurrentPlace)
+                        }
                     ```
                 </script>
             </section>
