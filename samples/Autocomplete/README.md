@@ -5,5 +5,5 @@
 
 ##Installation
 * `elm-package install`
-* `elm-make Main.elm --output index.js`
+* `elm-make elm/Main.elm --output index.js`
 * Open `index.html` file
