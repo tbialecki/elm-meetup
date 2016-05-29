@@ -8,6 +8,13 @@ import Model exposing (..)
 import Msg exposing (..)
 
 
+init : ( Model, Cmd Msg )
+init =
+    ( Model "" [] Initial
+    , Cmd.none
+    )
+
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of

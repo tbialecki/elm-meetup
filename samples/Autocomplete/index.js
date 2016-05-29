@@ -8451,8 +8451,7 @@ var _tbialecki$elm_meetup$Update$update = F2(
 				};
 		}
 	});
-
-var _tbialecki$elm_meetup$Main$init = {
+var _tbialecki$elm_meetup$Update$init = {
 	ctor: '_Tuple2',
 	_0: A3(
 		_tbialecki$elm_meetup$Model$Model,
@@ -8462,10 +8461,11 @@ var _tbialecki$elm_meetup$Main$init = {
 		_tbialecki$elm_meetup$Model$Initial),
 	_1: _elm_lang$core$Platform_Cmd$none
 };
+
 var _tbialecki$elm_meetup$Main$main = {
 	main: _elm_lang$html$Html_App$program(
 		{
-			init: _tbialecki$elm_meetup$Main$init,
+			init: _tbialecki$elm_meetup$Update$init,
 			view: _tbialecki$elm_meetup$View$view,
 			update: _tbialecki$elm_meetup$Update$update,
 			subscriptions: function (_p0) {

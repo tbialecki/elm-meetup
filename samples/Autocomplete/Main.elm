@@ -15,10 +15,3 @@ main =
         , update = update
         , subscriptions = \_ -> Sub.none
         }
-
-
-init : ( Model, Cmd Msg )
-init =
-    ( Model "" [] Initial
-    , Cmd.none
-    )
