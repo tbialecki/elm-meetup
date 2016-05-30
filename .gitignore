@@ -12,3 +12,4 @@ node_modules/
 css/reveal.min.css
 js/reveal.min.js
 samples/Autocomplete/elm-stuff
+samples/Gifs/elm-stuff
