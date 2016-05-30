@@ -22,11 +22,160 @@
 </head>
 <body>
 <div class="reveal">
+    <img class="logo" src="img/logo.svg"/>
     <div class="slides">
         <section>
             <h2>Friendly and functional frontend with Elm</h2>
             <small>Kamil Durkiewicz, Mateusz Czubak, Tomasz Białecki</small>
-            <img class="logo" src="img/logo.svg"/>
+        </section>
+        <section data-markdown>
+            <script type="text/template">
+                ## ELM
+                - Functional Reactive Programming
+                - No runtime exceptions
+                - Clear syntax
+                - Strong / Static Typing
+                - Module system and core libraries
+            </script>
+        </section>
+        <section data-markdown>
+            <script type="text/template">
+                ## Tooling
+
+                - Elm platform  = `elm-compiler`, `elm-make`, `elm-reactor`, `elm-repl` and `elm-package`
+                - own package manager
+                - `elm-package.json`
+
+                ```
+                npm install -g elm
+                ```
+            </script>
+        </section>
+        <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ### Syntax - Function declaration
+                    ```elm
+                    add : Int -> Int -> Int
+                    add x y =
+                      x + y
+                    ```
+
+                    ```elm
+                    add : Int -> Int -> Int
+                    add x y =
+                      let
+                        sum = a + b
+                      in
+                        sum
+                    ```
+                    <!-- .element: class="fragment"-->
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ### Syntax - Type aliases
+                    ```elm
+                    type alias Description = String
+
+                    description : Description
+                    description = "abc"
+                    ```
+
+                    ```elm
+                    type alias Point = { x : Float, y : Float }
+
+                    origin : Point
+                    origin =
+                      { x = 0, y = 0 }
+                    ```
+                    <!-- .element: class="fragment"-->
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ### Syntax - Union types
+                    ```elm
+                    type Fruit = Apple | Banana | Orange
+
+                    fruitToColor: Fruit -> String
+                    fruitToColor fruit =
+                      case fruit of
+                        Apple -> "green"
+                        Banana -> "yellow"
+                        Orange -> "orange"
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ### Syntax - Union types
+
+                    ```elm
+                    type alias Point = { x : Float, y : Float }
+
+                    type Shape
+                      = Circle Point Float
+                      | Rectangle Point Point
+
+                    area : Shape -> Float
+                    area shape =
+                      case shape of
+                        Circle center radius ->
+                          pi * radius ^ 2
+
+                        Rectangle corner1 corner2 ->
+                          abs (corner1.x - corner2.x) * abs (corner1.y - corner2.y)
+                    ```
+
+                </script>
+            </section>
+        </section>
+        <section data-markdown>
+            <script type="text/template">
+                ## Bun Nulls
+                ```elm
+                type Maybe a = Nothing | Just a
+
+                type alias User =
+                  { name : String
+                  , age : Maybe Int
+                  }
+
+                canBuyAlcohol : User -> Bool
+                canBuyAlcohol user =
+                  case user.age of
+                    Nothing ->
+                      False
+
+                    Just age ->
+                      age >= 18
+                ```
+            </script>
+        </section>
+        <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## elm-html
+                    - blazing fast
+                    - virtual DOM
+                    - lazy rendering
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## elm-html
+
+                    ```elm
+                    import Html exposing ( div, text )
+                    import Html.Attributes exposing ( class )
+
+                    sampleSection : Html
+                    sampleSection =
+                        div [ class "section" ] [ text "Section 1" ]
+                    ```
+                </script>
+            </section>
         </section>
         <section>
             <section data-markdown>
