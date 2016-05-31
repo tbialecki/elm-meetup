@@ -131,9 +131,46 @@
                 </script>
             </section>
         </section>
+        <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## List support
+                    ```elm
+                    -- Here are four things that are equivalent in elm
+
+                    numbers : List Int
+                    numbers = [ 1,2,3,4 ]
+
+                    numbers : List Int
+                    numbers = [ 1..4 ]
+
+                    numbers : List Int
+                    numbers = 1 :: [ 2,3,4 ]
+
+                    numbers : List Int
+                    numbers = 1 :: 2 :: 3 :: 4 :: []
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## List support
+                    ```elm
+                    length : List a -> Int
+                    length list =
+                      case list of
+                        [] ->
+                            0
+
+                        first :: rest ->
+                            1 + length rest
+                    ```
+                </script>
+            </section>
+        </section>
         <section data-markdown>
             <script type="text/template">
-                ## Bun Nulls
+                ## Banning Nulls
                 ```elm
                 type Maybe a = Nothing | Just a
 
@@ -150,6 +187,21 @@
 
                     Just age ->
                       age >= 18
+                ```
+            </script>
+        </section>
+        <section data-markdown>
+            <script type="text/template">
+                ## Automatic function currying
+
+                ```elm
+                concat : String -> String -> String
+                concat a b =
+                    a ++ b
+
+                listItem : String -> String
+                listItem =
+                    concat "-> "
                 ```
             </script>
         </section>
