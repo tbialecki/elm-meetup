@@ -6,5 +6,5 @@ import Model exposing (..)
 type Msg
     = NoOp
     | SearchZipCode String
-    | SearchSucceeded (List Place)
-    | SearchFailed
+    | SearchSucceed (List Place)
+    | SearchFail

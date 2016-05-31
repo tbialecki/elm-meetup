@@ -25,7 +25,7 @@ update msg model =
             let
                 searchPlaces =
                     getPlaces zipCode
-                        |> Task.perform (always SearchFailed) SearchSucceeded
+                        |> Task.perform (always SearchFail) SearchSucceed
 
                 foundPlaces =
                     if isZipCodeValid zipCode then
@@ -35,7 +35,7 @@ update msg model =
             in
                 ( { model | zipCode = zipCode }, foundPlaces )
 
-        SearchSucceeded places ->
+        SearchSucceed places ->
             ( { model
                 | places = places
                 , status = Success
@@ -43,7 +43,7 @@ update msg model =
             , Cmd.none
             )
 
-        SearchFailed ->
+        SearchFail ->
             ( { model | status = Error }, Cmd.none )
 
 

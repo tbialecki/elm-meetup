@@ -8173,9 +8173,9 @@ var _tbialecki$elm_meetup$Model$Error = {ctor: 'Error'};
 var _tbialecki$elm_meetup$Model$Success = {ctor: 'Success'};
 var _tbialecki$elm_meetup$Model$Initial = {ctor: 'Initial'};
 
-var _tbialecki$elm_meetup$Msg$SearchFailed = {ctor: 'SearchFailed'};
-var _tbialecki$elm_meetup$Msg$SearchSucceeded = function (a) {
-	return {ctor: 'SearchSucceeded', _0: a};
+var _tbialecki$elm_meetup$Msg$SearchFail = {ctor: 'SearchFail'};
+var _tbialecki$elm_meetup$Msg$SearchSucceed = function (a) {
+	return {ctor: 'SearchSucceed', _0: a};
 };
 var _tbialecki$elm_meetup$Msg$SearchZipCode = function (a) {
 	return {ctor: 'SearchZipCode', _0: a};
@@ -8422,8 +8422,8 @@ var _tbialecki$elm_meetup$Update$update = F2(
 				var _p1 = _p0._0;
 				var searchPlaces = A3(
 					_elm_lang$core$Task$perform,
-					_elm_lang$core$Basics$always(_tbialecki$elm_meetup$Msg$SearchFailed),
-					_tbialecki$elm_meetup$Msg$SearchSucceeded,
+					_elm_lang$core$Basics$always(_tbialecki$elm_meetup$Msg$SearchFail),
+					_tbialecki$elm_meetup$Msg$SearchSucceed,
 					_tbialecki$elm_meetup$Update$getPlaces(_p1));
 				var foundPlaces = _tbialecki$elm_meetup$Update$isZipCodeValid(_p1) ? searchPlaces : _elm_lang$core$Platform_Cmd$none;
 				return {
@@ -8433,7 +8433,7 @@ var _tbialecki$elm_meetup$Update$update = F2(
 						{zipCode: _p1}),
 					_1: foundPlaces
 				};
-			case 'SearchSucceeded':
+			case 'SearchSucceed':
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
