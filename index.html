@@ -378,6 +378,60 @@
             </section>
         </section>
         <section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## The Elm Architecture
+                    - Model - the state of your application
+                    - Update - a way to update your state
+                    - View - a way to view your state as HTML
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    <img data-src="img/elm-architecture.png">
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## The Architecture Skeleton
+                    ```elm
+                    -- MODEL
+                    type alias Model = { ... }
+
+                    -- UPDATE
+                    type Msg = Reset | ...
+
+                    update : Msg -> Model -> ( Model, Cmd Msg )
+                    update msg model =
+                    case msg of
+                    Reset -> ...
+                    ...
+
+                    -- VIEW
+                    view : Model -> Html Msg
+                    view model =
+                    ...
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Example
+                    <a href="https://github.com/mczubak/elm-zippopotamus" target="_blank">elm-zippopotamus</a>
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Modularity
+                    The basic idea is: nest The Elm Architecture pattern again and again.
+                    <br>
+                    <br>
+                    Example:
+                    <a href="https://github.com/tbialecki/elm-meetup/tree/master/samples/Gifs" target="_blank">Pair of gifs</a>
+                </script>
+            </section>
+        </section>
+        <section>
             <h2>Questions ?</h2>
         </section>
     </div>
