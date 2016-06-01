@@ -125,8 +125,8 @@
                         Circle center radius ->
                           pi * radius ^ 2
 
-                        Rectangle corner1 corner2 ->
-                          abs (corner1.x - corner2.x) * abs (corner1.y - corner2.y)
+                        Rectangle c1 c2 ->
+                          abs (c1.x - c2.x) * abs (c1.y - c2.y)
                     ```
 
                 </script>
@@ -247,11 +247,14 @@
                     getOffers : String -> Task Http.Error (List Offer)
                     getOffers customerName =
                       let
-                        url = "http://some.api/customer?name=" ++ customerName
-                        offersUrl id = "http://some.api/customer/" ++ id ++ "/offer"
+                        url = "http://some.api/customer?name="
+                          ++ customerName
+                        offersUrl id = "http://some.api/customer/"
+                          ++ id ++ "/offer"
                       in
                         Http.get customerDecode url
-                          `andThen` (\c -> Http.get offersDecoder (offersUrl c.id))
+                          `andThen` (\c -> Http.get
+                            offersDecoder (offersUrl c.id))
                     ```
                 </script>
             </section>
@@ -264,7 +267,8 @@
                     ```elm
                     getSiiliOffice : Task Http.Error String
                     getSiiliOffice =
-                      Http.getString "http://api.zippopotam.us/pl/50-073"
+                      Http.getString
+                        "http://api.zippopotam.us/pl/50-073"
                     ```
                 </script>
             </section>
@@ -284,7 +288,10 @@
 
                     ```elm
                     getSiiliOfficeCmd =
-                      Task.perform SiiliOfficeFailure SiiliOfficeSuccess getSiiliOffice
+                      Task.perform
+                        SiiliOfficeFailure
+                        SiiliOfficeSuccess
+                        getSiiliOffice
                     ```
                 </script>
             </section>
@@ -337,7 +344,8 @@
                         { init = init
                         , view = view
                         , update = update
-                        , subscriptions = always (Geolocation.changes CurrentPlace)
+                        , subscriptions = always
+                            (Geolocation.changes CurrentPlace)
                         }
                     ```
                 </script>
@@ -359,7 +367,8 @@
                     ```elm
                     port check : String -> Cmd msg
 
-                    port suggestions : (List String -> msg) -> Sub msg
+                    port suggestions :
+                      (List String -> msg) -> Sub msg
                     ```
                 </script>
             </section>
