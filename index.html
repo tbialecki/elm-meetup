@@ -45,6 +45,7 @@
                 - Elm platform  = `elm-compiler`, `elm-make`, `elm-reactor`, `elm-repl` and `elm-package`
                 - own package manager
                 - `elm-package.json`
+                - IDE support - Sublime, Atom, WebStorm
 
                 ```
                 npm install -g elm
@@ -197,11 +198,11 @@
                 ```elm
                 concat : String -> String -> String
                 concat a b =
-                    a ++ b
+                  a ++ b
 
                 listItem : String -> String
                 listItem =
-                    concat "-> "
+                  concat "-> "
                 ```
             </script>
         </section>
@@ -403,8 +404,8 @@
 
                     update : Msg -> Model -> ( Model, Cmd Msg )
                     update msg model =
-                    case msg of
-                    Reset -> ...
+                      case msg of
+                      Reset -> ...
                     ...
 
                     -- VIEW
